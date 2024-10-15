@@ -1,5 +1,6 @@
 #include <iostream>
 #include <list>
+#include <deque>
 #include <stack>
 #include <vector>
 #include <chrono>
@@ -7,8 +8,8 @@
 using namespace std;
 
 class Graph {
-    int V; // מספר הקודקודים
-    list<int> *adj; // רשימת השכנים שאליהם יוצאת קשת
+    int V;
+    deque<int> *adj;
 
     void DFSUtil(int v, vector<bool> &visited, vector<int> &component);
     void fillOrder(int v, vector<bool> &visited, stack<int> &Stack);
@@ -22,7 +23,7 @@ public:
 
 Graph::Graph(int V) {
     this->V = V;
-    adj = new list<int>[V + 1];
+    adj = new deque<int>[V + 1];  // שינוי ל-deque
 }
 
 void Graph::addEdge(int v, int w) {
@@ -94,6 +95,8 @@ int main() {
         cin >> u >> v;
         g.addEdge(u, v);
     }
+
+
     auto start = chrono::high_resolution_clock::now();
     g.kosarajuSCC();
     auto stop = chrono::high_resolution_clock::now();
