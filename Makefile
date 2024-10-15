@@ -1,6 +1,6 @@
 # Compiler
 CXX = clang++
-CXXFLAGS = -std=c++17 -Wall -O2
+CXXFLAGS = -std=c++17 -Wall -O2 -pg
 
 # Targets
 TARGETS = Q1 Q1Deque
@@ -14,4 +14,4 @@ Q1Deque: Q1Deque.cpp
 	$(CXX) $(CXXFLAGS) -o Q1Deque Q1Deque.cpp
 
 clean:
-	rm -f $(TARGETS)
+	rm -f $(TARGETS) gmon.out 
